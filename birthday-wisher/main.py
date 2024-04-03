@@ -11,8 +11,8 @@ import pandas
 import random
 import smtplib
 
-MY_EMAIL = "YOUR EMAIL"
-MY_PASSWORD = "YOUR PASSWORD"
+MY_EMAIL = "munugotisairuthvik@gmail.com"
+MY_PASSWORD = "jfzjerqoyfmcfols"
 
 today = datetime.now()
 today_tuple = (today.month, today.day)
@@ -26,8 +26,8 @@ if today_tuple in birthdays_dict:
         contents = letter_file.read()
         contents = contents.replace("[NAME]", birthday_person["name"])
 
-    with smtplib.SMTP("YOUR EMAIL PROVIDER SMTP SERVER ADDRESS") as connection:
-        connection.starttls()
+    with smtplib.SMTP_SSL("smtp.gmail.com", port=465) as connection:
+        #connection.starttls()
         connection.login(MY_EMAIL, MY_PASSWORD)
         connection.sendmail(
             from_addr=MY_EMAIL,
